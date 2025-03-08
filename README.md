@@ -63,4 +63,4 @@ This game is a time-traveling adventure where players unlock physics abilities (
 
 ### Prerequisites / 环境要求
 - Node.js v16+  
-- Cocos Creator 3.8.5+  
+- Cocos Creator 3.8.5  
