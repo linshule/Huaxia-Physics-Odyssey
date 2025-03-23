@@ -24,6 +24,8 @@ export class LevelManager extends Component {
         if (value == 'INIT') cur = LevelState.Level_INIT;
         if (value == 'PLAYING') cur = LevelState.Level_PLAYING;
         if (value == 'END') cur = LevelState.Level_END;
+        if (value == 'Setting') director.loadScene('Setting');
+        if (value == 'Start') director.loadScene('Start');
         switch (cur) {
             case LevelState.Level_INIT:
                 this.toNewLevel();
