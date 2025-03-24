@@ -4,13 +4,17 @@ const { ccclass, property } = _decorator;
 @ccclass('SettingController')
 export class SettingController extends Component {
     @property({type: String})
-    targetScene:string="Start";
+    targetScene1:string="Start";
+    @property(Node)
+    down:Node=null;
+    @property(Node)
+    up:Node=null;
     onLoad(){
-       const button=this.node.getComponent(Button);
-       button.node.on(Button.EventType.CLICK,this.switchScene,this);
+       const button1=this.node.getComponent(Button);
+       button1.node.on(Button.EventType.CLICK,this.switchScene1,this);
     }
-    switchScene(){
-        director.loadScene(this.targetScene);
+    switchScene1(){
+        director.loadScene(this.targetScene1);
     }
     start() {
 
