@@ -1,4 +1,4 @@
-import { _decorator, CCInteger, Component, instantiate, Node, Prefab} from 'cc';
+import { _decorator, CCInteger, Component, instantiate, Node, Prefab,Vec2} from 'cc';
 const { ccclass, property } = _decorator;
 enum BlockType{
     BT_NONE,
@@ -12,6 +12,13 @@ export class Level1Manage extends Component {
     public boxPrefab2:Prefab|null=null;
     @property({type:Prefab})
     public boxPrefab3:Prefab|null=null;
+    @property({type:Prefab})
+    public doorstar:Prefab|null=null;
+    @property(Prefab)
+    public doorend:Prefab|null=null;
+    @property(Prefab)
+    public tool:Prefab|null=null;
+
     start() {
         this.generateMap1();
         this.generateMap2();
@@ -19,7 +26,10 @@ export class Level1Manage extends Component {
         this.generateMap4();
         this.generateMap5();
         this. generateMap6();
+        this.generateMap7();
+        this.generateMap8();
     }
+
     generateMap1() {
         const manualBlocks = [
             { x: -345, y: -188, prefab: this.boxPrefab1 },
@@ -100,6 +110,36 @@ export class Level1Manage extends Component {
             { x: 370, y: 155, prefab: this.boxPrefab2 },
             { x: 555, y:250, prefab: this.boxPrefab2 },
             { x: 430, y: -260, prefab: this.boxPrefab2 }
+        ];
+    
+        for (const blockInfo of manualBlocks) {
+            if (blockInfo.prefab) {
+                const block = instantiate(blockInfo.prefab);
+                block.setPosition(blockInfo.x, blockInfo.y, 0);
+                block.parent = this.node;
+            }
+        }
+    }
+    generateMap7() {
+        const manualBlocks = [
+            { x: -618, y: -50, prefab: this.doorstar },
+            { x: 600, y: -146, prefab: this.doorend}
+        ];
+    
+        for (const blockInfo of manualBlocks) {
+            if (blockInfo.prefab) {
+                const block = instantiate(blockInfo.prefab);
+                block.setPosition(blockInfo.x, blockInfo.y, 0);
+                block.parent = this.node;
+            }
+        }
+    }
+    generateMap8() {
+        const manualBlocks = [
+            { x: -450, y: -30, prefab: this.tool },
+            { x: -330, y: 50, prefab: this.tool},
+            { x: 405, y: 210, prefab: this.tool}
+
         ];
     
         for (const blockInfo of manualBlocks) {

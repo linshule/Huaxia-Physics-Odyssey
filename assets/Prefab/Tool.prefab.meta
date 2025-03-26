@@ -1,0 +1,13 @@
+{
+  "ver": "1.1.50",
+  "importer": "prefab",
+  "imported": true,
+  "uuid": "35ff45bc-cad9-4390-9e1c-abcae9e51f10",
+  "files": [
+    ".json"
+  ],
+  "subMetas": {},
+  "userData": {
+    "syncNodeName": "Tool"
+  }
+}

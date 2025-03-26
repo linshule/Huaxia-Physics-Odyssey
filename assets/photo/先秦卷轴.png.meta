@@ -1,0 +1,134 @@
+{
+  "ver": "1.0.27",
+  "importer": "image",
+  "imported": true,
+  "uuid": "3cd5e26a-db8a-4e9e-8775-637083efa8a7",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "3cd5e26a-db8a-4e9e-8775-637083efa8a7@6c48a",
+      "displayName": "先秦卷轴",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "imageUuidOrDatabaseUri": "3cd5e26a-db8a-4e9e-8775-637083efa8a7",
+        "isUuid": true,
+        "visible": false,
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9941": {
+      "importer": "sprite-frame",
+      "uuid": "3cd5e26a-db8a-4e9e-8775-637083efa8a7@f9941",
+      "displayName": "先秦卷轴",
+      "id": "f9941",
+      "name": "spriteFrame",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": -20.5,
+        "offsetY": 21.5,
+        "trimX": 188,
+        "trimY": 86,
+        "width": 314,
+        "height": 505,
+        "rawWidth": 731,
+        "rawHeight": 720,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -157,
+            -252.5,
+            0,
+            157,
+            -252.5,
+            0,
+            -157,
+            252.5,
+            0,
+            157,
+            252.5,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            188,
+            634,
+            502,
+            634,
+            188,
+            129,
+            502,
+            129
+          ],
+          "nuv": [
+            0.25718194254445964,
+            0.17916666666666667,
+            0.6867305061559508,
+            0.17916666666666667,
+            0.25718194254445964,
+            0.8805555555555555,
+            0.6867305061559508,
+            0.8805555555555555
+          ],
+          "minPos": [
+            -157,
+            -252.5,
+            0
+          ],
+          "maxPos": [
+            157,
+            252.5,
+            0
+          ]
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "3cd5e26a-db8a-4e9e-8775-637083efa8a7@6c48a",
+        "atlasUuid": ""
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "hasAlpha": true,
+    "fixAlphaTransparencyArtifacts": false,
+    "redirect": "3cd5e26a-db8a-4e9e-8775-637083efa8a7@6c48a"
+  }
+}
