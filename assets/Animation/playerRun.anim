@@ -8,10 +8,10 @@
     },
     "_native": "",
     "sample": 60,
-    "speed": 1,
+    "speed": 1.5,
     "wrapMode": 2,
     "enableTrsBlending": false,
-    "_duration": 0.43333333333333335,
+    "_duration": 0.5166666666666667,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -65,11 +65,9 @@
     "__type__": "cc.ObjectCurve",
     "_times": [
       0,
-      0.08333333333333333,
       0.16666666666666666,
-      0.25,
       0.3333333333333333,
-      0.4166666666666667
+      0.5
     ],
     "_values": [
       {
@@ -77,19 +75,11 @@
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "3330392f-0229-4d28-a106-a274870bb193@f9941",
+        "__uuid__": "12068d8e-86b1-4534-b9fb-c9c5e3e22d76@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "d6d06a3e-96fa-4be4-a026-bcd0d55171ac@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
-        "__uuid__": "eb0ce1ed-187d-427d-bf69-c976515389db@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
-        "__uuid__": "28a60443-c0a5-4f37-b949-84baa2472149@f9941",
+        "__uuid__": "5b81a560-6b44-4c7a-88da-026647145beb@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {

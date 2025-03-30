@@ -56,7 +56,7 @@
     "_globals": {
       "__id__": 13
     },
-    "_id": "d8ed24d0-3608-4212-8159-6ce64c7abc6c"
+    "_id": "642c8802-03ec-4f8c-a733-c5b6a0ef8824"
   },
   {
     "__type__": "cc.Node",
@@ -175,7 +175,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 523.0013642564802,
+    "_orthoHeight": 379.25925925925924,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -231,8 +231,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
+      "x": 3.718,
+      "y": -2.301,
       "z": 0
     },
     "_lrot": {
@@ -339,6 +339,18 @@
     },
     "boxPrefab3": {
       "__uuid__": "f7077fb7-1024-4725-aa7a-dcddf83b7031",
+      "__expectedType__": "cc.Prefab"
+    },
+    "doorstar": {
+      "__uuid__": "8a672e33-aa34-4b61-8485-1b20e3fea285",
+      "__expectedType__": "cc.Prefab"
+    },
+    "doorend": {
+      "__uuid__": "8a672e33-aa34-4b61-8485-1b20e3fea285",
+      "__expectedType__": "cc.Prefab"
+    },
+    "tool": {
+      "__uuid__": "35ff45bc-cad9-4390-9e1c-abcae9e51f10",
       "__expectedType__": "cc.Prefab"
     },
     "_id": "79hH2+2eNMna+0i/tGuWce"
