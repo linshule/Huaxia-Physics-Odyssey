@@ -173,7 +173,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 471.5789473684211,
+    "_orthoHeight": 496.8637532133676,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -744,7 +744,7 @@
     "_string": "返回",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 40.6125,
+    "_actualFontSize": 38.9,
     "_fontSize": 32,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1288,7 +1288,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 33.29971722068329,
+      "width": 33.3000908780527,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -1321,7 +1321,7 @@
     "_string": "-",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 126.91406249999999,
+    "_actualFontSize": 121.5625,
     "_fontSize": 100,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1500,7 +1500,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 29.195978570329334,
+      "width": 29.198616243573266,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -1533,7 +1533,7 @@
     "_string": "+",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 63.45703124999999,
+    "_actualFontSize": 60.78125,
     "_fontSize": 50,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2018,7 +2018,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "cbb47a98-a25c-4803-a431-717833b95b68@f9941",
+      "__uuid__": "e4e64e86-6476-43c6-aa6a-0dcbca59bfd1@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
