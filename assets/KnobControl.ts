@@ -1,4 +1,3 @@
-
 import { _decorator, Button, Component, EventHandler, Node, Vec3 } from 'cc';
 
 const { ccclass, property } = _decorator;
@@ -8,22 +7,16 @@ export class KnobControl extends Component {
 
     @property(Node)
     plusButton: Node = null;
-
     @property(Node)
     minusButton: Node = null;
-
     @property(Node)
     knobNode: Node = null;
-
     @property
     moveStep: number = 10;
-
     @property
     minX: number = 300;
-
     @property
-    maxX: number = 440;
-
+    maxX: number = 400;
     moveKnob(delta: number) {
         const pos = this.knobNode.getPosition();
         let newX = pos.x + delta;
@@ -44,7 +37,7 @@ export class KnobControl extends Component {
             const plusBtnComp = this.plusButton.getComponent(Button);
             const plusHandler = new EventHandler();
             plusHandler.target = this.node;
-            plusHandler.component = "KnobControl"; // 👈 必须与你类名一致
+            plusHandler.component = "KnobControl"; 
             plusHandler.handler = "onPlusClicked";
             plusBtnComp.clickEvents.push(plusHandler);
         }
