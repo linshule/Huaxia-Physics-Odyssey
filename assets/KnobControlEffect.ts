@@ -1,8 +1,10 @@
 import { _decorator, Button, Component, EventHandler, Node, UITransform, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('KnobControl')
-export class KnobControl extends Component {
+@ccclass('KnobControlEffect')
+export class KnobControlEffect extends Component {
+
+    private volume: number = 0;
 
     @property(Node)
     plusButton: Node = null;
@@ -21,7 +23,6 @@ export class KnobControl extends Component {
 
     private minX: number;
     private maxX: number;
-    private volume: number = 0;
 
     start() {
         this.calculateRange();
@@ -53,20 +54,20 @@ export class KnobControl extends Component {
     setupButtons() {
         if (this.plusButton) {
             const plusBtnComp = this.plusButton.getComponent(Button);
-            plusBtnComp.clickEvents = []; // 清空旧的
+            plusBtnComp.clickEvents = [];
             const plusHandler = new EventHandler();
             plusHandler.target = this.node;
-            plusHandler.component = "KnobControl";
+            plusHandler.component = "KnobControlEffect";
             plusHandler.handler = "onPlusClicked";
             plusBtnComp.clickEvents.push(plusHandler);
         }
 
         if (this.minusButton) {
             const minusBtnComp = this.minusButton.getComponent(Button);
-            minusBtnComp.clickEvents = []; // 清空旧的
+            minusBtnComp.clickEvents = [];
             const minusHandler = new EventHandler();
             minusHandler.target = this.node;
-            minusHandler.component = "KnobControl";
+            minusHandler.component = "KnobControlEffect";
             minusHandler.handler = "onMinusClicked";
             minusBtnComp.clickEvents.push(minusHandler);
         }
@@ -84,7 +85,7 @@ export class KnobControl extends Component {
     updateVolume(knobX: number) {
         const ratio = (knobX - this.minX) / (this.maxX - this.minX);
         this.volume = Math.round(ratio * 100);
-        console.log("当前音量:", this.volume);
+        console.log("动作音效音量:", this.volume);
     }
 
     onPlusClicked() {
