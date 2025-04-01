@@ -122,8 +122,8 @@ export class Level1Manage extends Component {
     }
     generateMap7() {
         const manualBlocks = [
-            { x: -612, y: -45, prefab: this.doorstar },
-            { x: 580, y: -140, prefab: this.doorend}
+            { x: -650, y: -45, prefab: this.doorstar },
+            { x: 620, y: -140, prefab: this.doorend}
         ];
     
         for (const blockInfo of manualBlocks) {
@@ -136,7 +136,7 @@ export class Level1Manage extends Component {
     }
     generateMap8() {
         const manualBlocks = [
-            { x: -450, y: -30, prefab: this.tool },
+            { x: -490, y: -58, prefab: this.tool },
             { x: -330, y: 50, prefab: this.tool},
             { x: 405, y: 210, prefab: this.tool}
 
