@@ -26,6 +26,8 @@ export class PlayerController extends Component {
             collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
             collider.on(Contact2DType.END_CONTACT, this.onEndContact, this);
         }
+
+        this.node.setPosition(new Vec3(-6800, -1000, 0));
     }
 
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact) {
@@ -104,6 +106,9 @@ export class PlayerController extends Component {
             this.rigidPlayer.applyLinearImpulse(new Vec2(0, this.jumpForce), Vec2.ZERO, true);
             this.jumpCount++;
             this.isGrounded = false;
+        }
+        if (this.node.getPosition().x < -7000 || this.node.getPosition().y < -4100 || this.node.getPosition().x > 5800) {
+            this.node.setPosition(new Vec3(-6800, -1000, 0));
         }
     }
 }
