@@ -1,42 +1,72 @@
-import { _decorator, CCInteger, Component, instantiate, Node, Prefab,Vec2} from 'cc';
+import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2 } from 'cc';
 const { ccclass, property } = _decorator;
-enum BlockType{
+enum BlockType {
     BT_NONE,
     BT_STONE,
 };
 @ccclass('Level1Manage')
 export class Level1Manage extends Component {
-    @property({type:Prefab})
-    public boxPrefab1:Prefab|null=null;
-    @property({type:Prefab})
-    public boxPrefab2:Prefab|null=null;
-    @property({type:Prefab})
-    public boxPrefab3:Prefab|null=null;
-    @property({type:Prefab})
-    public doorstar:Prefab|null=null;
+    @property({ type: Prefab })
+    public boxPrefab1: Prefab | null = null;
+    @property({ type: Prefab })
+    public boxPrefab2: Prefab | null = null;
+    @property({ type: Prefab })
+    public boxPrefab3: Prefab | null = null;
+    @property({ type: Prefab })
+    public doorstar: Prefab | null = null;
     @property(Prefab)
-    public doorend:Prefab|null=null;
+    public doorend: Prefab | null = null;
     @property(Prefab)
-    public tool:Prefab|null=null;
+    public tool: Prefab | null = null;
+    @property(Prefab)
+    public black: Prefab | null = null;
+    @property(Node)
+    public playerBase: Node | null = null;
 
+    public _road;
+    public roadHeight = 10;
+    public roadLength = 10;
+    public BLOCK_SIZE = 2000;
     start() {
         this.generateMap1();
         this.generateMap2();
         this.generateMap3();
         this.generateMap4();
         this.generateMap5();
-        this. generateMap6();
+        this.generateMap6();
         this.generateMap7();
         this.generateMap8();
+        this.generateBlack();
     }
-
+    generateBlack() {
+        this._road = [];
+        for (let i = 1; i <= this.roadHeight; i++) {
+            let _roadCur: boolean[] = [];
+            for (let j = 1; j <= this.roadLength; j++) {
+                _roadCur[j] = true;
+            }
+            this._road[i] = _roadCur;
+        }
+        this._road[1][2] = false;
+        this._road[1][3] = false;
+        for (let i = 1; i <= this.roadHeight; i++) {
+            for (let j = 1; j <= this.roadLength; j++) {
+                let block: Node | null = instantiate(this.black);
+                if (!this._road[i][j]) block = null;
+                if (block) {
+                    block.setPosition(i * this.BLOCK_SIZE - 9700, j * this.BLOCK_SIZE - 6150, 0);
+                    this.playerBase.addChild(block);
+                }
+            }
+        }
+    }
     generateMap1() {
         const manualBlocks = [
             { x: -345, y: -188, prefab: this.boxPrefab1 },
             { x: -145, y: -188, prefab: this.boxPrefab2 },
             { x: -510, y: -105, prefab: this.boxPrefab3 }
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -51,7 +81,7 @@ export class Level1Manage extends Component {
             { x: -260, y: -10, prefab: this.boxPrefab3 },
             { x: -260, y: 74, prefab: this.boxPrefab1 }
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -66,7 +96,7 @@ export class Level1Manage extends Component {
             { x: 112, y: 68, prefab: this.boxPrefab2 },
             { x: 598, y: -200, prefab: this.boxPrefab1 }
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -78,10 +108,10 @@ export class Level1Manage extends Component {
     generateMap4() {
         const manualBlocks = [
             { x: 240, y: -24, prefab: this.boxPrefab3 },
-            { x: 200, y:-188, prefab: this.boxPrefab2 },
+            { x: 200, y: -188, prefab: this.boxPrefab2 },
             { x: 75, y: 235, prefab: this.boxPrefab1 }
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -93,10 +123,10 @@ export class Level1Manage extends Component {
     generateMap5() {
         const manualBlocks = [
             { x: 500, y: -110, prefab: this.boxPrefab2 },
-            { x: 30, y:-100, prefab: this.boxPrefab2 },
+            { x: 30, y: -100, prefab: this.boxPrefab2 },
             { x: 320, y: -110, prefab: this.boxPrefab1 }
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -108,10 +138,10 @@ export class Level1Manage extends Component {
     generateMap6() {
         const manualBlocks = [
             { x: 370, y: 155, prefab: this.boxPrefab2 },
-            { x: 555, y:250, prefab: this.boxPrefab2 },
+            { x: 555, y: 250, prefab: this.boxPrefab2 },
             { x: 430, y: -260, prefab: this.boxPrefab2 }
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -123,9 +153,9 @@ export class Level1Manage extends Component {
     generateMap7() {
         const manualBlocks = [
             { x: -650, y: -45, prefab: this.doorstar },
-            { x: 620, y: -140, prefab: this.doorend}
+            { x: 620, y: -140, prefab: this.doorend }
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -137,11 +167,11 @@ export class Level1Manage extends Component {
     generateMap8() {
         const manualBlocks = [
             { x: -490, y: -58, prefab: this.tool },
-            { x: -330, y: 50, prefab: this.tool},
-            { x: 405, y: 210, prefab: this.tool}
+            { x: -330, y: 50, prefab: this.tool },
+            { x: 405, y: 210, prefab: this.tool }
 
         ];
-    
+
         for (const blockInfo of manualBlocks) {
             if (blockInfo.prefab) {
                 const block = instantiate(blockInfo.prefab);
@@ -151,7 +181,7 @@ export class Level1Manage extends Component {
         }
     }
     update(deltaTime: number) {
-        
+
     }
 
 }

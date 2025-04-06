@@ -7,13 +7,14 @@ export class PlayerController extends Component {
     private rigidPlayer: RigidBody2D | null = null;
     private isMove: number = 0;
     private isJump: boolean = false;
-    private moveSpeed: number = 2;
-    private maxJumpCount = 2;
+    private moveSpeed: number = 3;
+    private maxJumpCount = 1;
     private isGrounded: boolean = false;
     private jumpCount: number = 0;
     private playAnim: Animation | null = null;
     private jumpForce: number = 10;
-
+    private jumpProgress: number = 0;
+    private isBlack: boolean = false;
     start() {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
@@ -27,16 +28,39 @@ export class PlayerController extends Component {
             collider.on(Contact2DType.END_CONTACT, this.onEndContact, this);
         }
 
-        this.node.setPosition(new Vec3(-6800, -1000, 0));
+        this.node.setPosition(new Vec3(-8320, -800, 0));
     }
 
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact) {
-        if (otherCollider.group === PhysicsSystem2D.PhysicsGroup.DEFAULT) {
+        if (otherCollider.group === PhysicsSystem2D.PhysicsGroup.GROUND) {
             const normal = contact.getWorldManifold().normal;
             if (normal.y < 0.5) {
                 this.isGrounded = true;
                 this.jumpCount = 0;
             }
+        }
+        if (otherCollider.group === PhysicsSystem2D.PhysicsGroup.BLACK) {
+            if (this.isBlack) {
+                selfCollider.body.enabledContactListener = false;
+                let blackAnim = otherCollider.node.getComponent(Animation);
+                blackAnim.play('black');
+                setTimeout(() => {
+                    otherCollider.node.active = false;
+                    selfCollider.body.enabledContactListener = true;
+                }, 501);
+            }
+        }
+        if (otherCollider.group === PhysicsSystem2D.PhysicsGroup.SCROLL) {
+            selfCollider.body.enabledContactListener = false;
+            otherCollider.node.active = false;
+            this.jumpProgress++;
+            if (this.jumpProgress == 1) {
+                this.isBlack = true;
+            }
+            if (this.jumpProgress == 3) {
+                this.maxJumpCount = 2;
+            }
+            selfCollider.body.enabledContactListener = true;
         }
     }
 
@@ -107,8 +131,8 @@ export class PlayerController extends Component {
             this.jumpCount++;
             this.isGrounded = false;
         }
-        if (this.node.getPosition().x < -7000 || this.node.getPosition().y < -4100 || this.node.getPosition().x > 5800) {
-            this.node.setPosition(new Vec3(-6800, -1000, 0));
+        if (this.node.getPosition().x < -8630 || this.node.getPosition().y < -4710 || this.node.getPosition().x > 7400) {
+            this.node.setPosition(new Vec3(-8320, -800, 0));
         }
     }
 }
