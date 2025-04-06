@@ -63,7 +63,7 @@ export class Level1Manage extends Component {
     generateMap1() {
         const manualBlocks = [
             { x: -345, y: -188, prefab: this.boxPrefab1 },
-            { x: -145, y: -188, prefab: this.boxPrefab2 },
+            { x: -145, y: -188 , prefab: this.boxPrefab2 },
             { x: -510, y: -105, prefab: this.boxPrefab3 }
         ];
 
@@ -123,7 +123,7 @@ export class Level1Manage extends Component {
     generateMap5() {
         const manualBlocks = [
             { x: 500, y: -110, prefab: this.boxPrefab2 },
-            { x: 30, y: -100, prefab: this.boxPrefab2 },
+            { x: 40, y: -110, prefab: this.boxPrefab2 },
             { x: 320, y: -110, prefab: this.boxPrefab1 }
         ];
 
