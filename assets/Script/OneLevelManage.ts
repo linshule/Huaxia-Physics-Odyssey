@@ -28,6 +28,10 @@ export class Level1Manage extends Component {
     public roadLength = 10;
     public BLOCK_SIZE = 2000;
     start() {
+        this.init();
+    }
+    init() {
+        this.node.removeAllChildren();
         this.generateMap1();
         this.generateMap2();
         this.generateMap3();
@@ -63,7 +67,7 @@ export class Level1Manage extends Component {
     generateMap1() {
         const manualBlocks = [
             { x: -345, y: -188, prefab: this.boxPrefab1 },
-            { x: -145, y: -188 , prefab: this.boxPrefab2 },
+            { x: -145, y: -188, prefab: this.boxPrefab2 },
             { x: -510, y: -105, prefab: this.boxPrefab3 }
         ];
 

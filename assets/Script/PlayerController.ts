@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, EventTarget, Input, input, EventKeyboard, KeyCode, RigidBody, Vec3, RigidBody2D, Vec2, Animation, Collider2D, Contact2DType, PhysicsSystem2D, IPhysics2DContact } from 'cc';
+import { curLevel, LevelManager } from './LevelManager';
 const { ccclass, property } = _decorator;
 
 const eventTarget = new EventTarget();
@@ -15,10 +16,20 @@ export class PlayerController extends Component {
     private jumpForce: number = 10;
     private jumpProgress: number = 0;
     private isBlack: boolean = false;
+
+    @property({ type: Node })
+    private backGround: Node | null = null;
+
+    public levelCtrl: LevelManager | null = null;
+
     start() {
+        this.levelCtrl = this.backGround.getComponent(LevelManager);
+        this.init();
+    }
+
+    init() {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
-        // input.on(Input.EventType.KEY_PRESSING, this.onKeyPressing, this);
         this.rigidPlayer = this.node.getComponent(RigidBody2D);
         this.playAnim = this.node.getComponent(Animation);
 
@@ -43,10 +54,18 @@ export class PlayerController extends Component {
             if (this.isBlack) {
                 selfCollider.body.enabledContactListener = false;
                 let blackAnim = otherCollider.node.getComponent(Animation);
+                let xkcx1 = selfCollider.node.getChildByName('xkcx1');
+                let xkcx2 = selfCollider.node.getChildByName('xkcx2');
+                xkcx1.active = true;
+                xkcx2.active = true;
+                xkcx1.getComponent(Animation).play('xkcx');
+                xkcx2.getComponent(Animation).play('xkcxrw');
                 blackAnim.play('black');
                 setTimeout(() => {
                     otherCollider.node.active = false;
                     selfCollider.body.enabledContactListener = true;
+                    xkcx1.active = false;
+                    xkcx2.active = false;
                 }, 501);
             }
         }
@@ -61,6 +80,12 @@ export class PlayerController extends Component {
                 this.maxJumpCount = 2;
             }
             selfCollider.body.enabledContactListener = true;
+        }
+        if (otherCollider.group === PhysicsSystem2D.PhysicsGroup.DOOR) {
+            if (this.jumpProgress == 3) {
+                curLevel.setValue(curLevel.value + 1);
+                this.levelCtrl.toNewLevel();
+            }
         }
     }
 
@@ -100,20 +125,6 @@ export class PlayerController extends Component {
                 break;
         }
     }
-    onKeyPressing(event: EventKeyboard) {
-        switch (event.keyCode) {
-            case KeyCode.KEY_A:
-                this.playAnim.play('playerRun');
-                this.node.setScale(-1, 1);
-                this.isMove = -1;
-                break;
-            case KeyCode.KEY_D:
-                this.playAnim.play('playerRun');
-                this.node.setScale(1, 1);
-                this.isMove = 1;
-                break;
-        }
-    }
 
     update(deltaTime: number) {
         if (this.rigidPlayer) {
@@ -126,7 +137,14 @@ export class PlayerController extends Component {
             const velocity = this.rigidPlayer.linearVelocity;
             velocity.y = 0;
             this.rigidPlayer.linearVelocity = velocity;
-
+            if (this.jumpCount == 1) {
+                let ggyl = this.node.getChildByName('ggyl');
+                ggyl.active = true;
+                ggyl.getComponent(Animation).play('ggyl');
+                setTimeout(() => {
+                    ggyl.active = false;
+                }, 501);
+            }
             this.rigidPlayer.applyLinearImpulse(new Vec2(0, this.jumpForce), Vec2.ZERO, true);
             this.jumpCount++;
             this.isGrounded = false;

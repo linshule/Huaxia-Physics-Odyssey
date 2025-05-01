@@ -1,5 +1,6 @@
-import { _decorator, Component, director, Node } from 'cc';
+import { _decorator, Component, director, Node, EventTarget } from 'cc';
 const { ccclass, property } = _decorator;
+const eventTarget = new EventTarget();
 
 enum LevelState {
     Level_INIT,
@@ -7,7 +8,13 @@ enum LevelState {
     Level_END,
 }
 
-export let curLevel: number = 0;
+
+export let curLevel = {
+    value: 0,
+    setValue(newValue: number) {
+        this.value = newValue;
+    }
+};
 
 @ccclass('LevelManager')
 export class LevelManager extends Component {
@@ -16,7 +23,7 @@ export class LevelManager extends Component {
     }
 
     setCurLevelNumber(value: number) {
-        curLevel = value;
+        curLevel.value = value;
     }
 
     setCurLevelState(event: Event, value: string) {
@@ -38,8 +45,9 @@ export class LevelManager extends Component {
     }
 
     toNewLevel() {
-        let nowLevel: string = 'Level' + curLevel.toString();
+        let nowLevel: string = 'Level' + curLevel.value.toString();
         console.log(nowLevel);
+        eventTarget.emit('changeLevel', curLevel.value);
         director.loadScene(nowLevel);
     }
 
