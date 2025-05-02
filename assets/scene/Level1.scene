@@ -23,7 +23,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 26
+      "__id__": 27
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -54,7 +54,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 29
+      "__id__": 30
     },
     "_id": "642c8802-03ec-4f8c-a733-c5b6a0ef8824"
   },
@@ -80,13 +80,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 23
-      },
-      {
         "__id__": 24
       },
       {
         "__id__": 25
+      },
+      {
+        "__id__": 26
       }
     ],
     "_prefab": null,
@@ -178,7 +178,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 380.28985507246375,
+    "_orthoHeight": 365.8615136876006,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -471,6 +471,9 @@
       },
       {
         "__id__": 22
+      },
+      {
+        "__id__": 23
       }
     ],
     "removedComponents": []
@@ -564,6 +567,16 @@
     }
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 21
+    },
+    "propertyPath": [
+      "Level"
+    ],
+    "value": 1
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -639,7 +652,7 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 27
+        "__id__": 28
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -661,7 +674,7 @@
       "__id__": 11
     },
     "targetInfo": {
-      "__id__": 28
+      "__id__": 29
     }
   },
   {
@@ -673,28 +686,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 30
-    },
-    "shadows": {
       "__id__": 31
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 32
     },
-    "fog": {
+    "_skybox": {
       "__id__": 33
     },
-    "octree": {
+    "fog": {
       "__id__": 34
     },
-    "skin": {
+    "octree": {
       "__id__": 35
     },
-    "lightProbeInfo": {
+    "skin": {
       "__id__": 36
     },
-    "postSettings": {
+    "lightProbeInfo": {
       "__id__": 37
+    },
+    "postSettings": {
+      "__id__": 38
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
