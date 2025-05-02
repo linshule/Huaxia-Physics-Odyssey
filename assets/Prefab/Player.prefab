@@ -25,7 +25,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 60
+      "__id__": 58
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -75,17 +75,17 @@
     "_active": true,
     "_components": [
       {
+        "__id__": 51
+      },
+      {
         "__id__": 53
       },
       {
         "__id__": 55
-      },
-      {
-        "__id__": 57
       }
     ],
     "_prefab": {
-      "__id__": 59
+      "__id__": 57
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -269,13 +269,10 @@
       },
       {
         "__id__": 48
-      },
-      {
-        "__id__": 50
       }
     ],
     "_prefab": {
-      "__id__": 52
+      "__id__": 50
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -810,7 +807,7 @@
       "__id__": 7
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 33
@@ -1037,26 +1034,6 @@
     "fileId": "90kCdJSaBFoIhSo6+c1kqC"
   },
   {
-    "__type__": "ed217otH5xB6JBu2gZCaw52",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 7
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 45
-    },
-    "Level": 0,
-    "backGround": null,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "797B3XSfpKO6X2mzfFJi0h"
-  },
-  {
     "__type__": "cc.BoxCollider2D",
     "_name": "",
     "_objFlags": 0,
@@ -1066,7 +1043,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 47
+      "__id__": 45
     },
     "tag": 0,
     "_group": 1,
@@ -1100,7 +1077,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 49
+      "__id__": 47
     },
     "enabledContactListener": true,
     "bullet": false,
@@ -1134,7 +1111,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 51
+      "__id__": 49
     },
     "Level": 0,
     "backGround": null,
@@ -1167,7 +1144,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 54
+      "__id__": 52
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -1195,7 +1172,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 56
+      "__id__": 54
     },
     "_cameraComponent": {
       "__id__": 4
@@ -1217,7 +1194,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 58
+      "__id__": 56
     },
     "_alignFlags": 45,
     "_target": null,

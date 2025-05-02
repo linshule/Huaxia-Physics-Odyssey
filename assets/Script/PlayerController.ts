@@ -57,6 +57,20 @@ export class PlayerController extends Component {
             this.maxJumpCount = 2;
             this.isBlack = true;
             this.fireCount = 3;
+        } else if (curLevel.value == 3) {
+            this.node.setPosition(new Vec3(-8320, -800, 0));
+            this.jumpProgress = 5;
+            this.maxJumpCount = 2;
+            this.isBlack = true;
+            input.on(Input.EventType.KEY_DOWN, this.onCitieDown, this);
+            input.on(Input.EventType.KEY_UP, this.onCitieUp, this);
+        } else if (curLevel.value == 4) {
+            this.node.setPosition(new Vec3(-8320, -800, 0));
+            this.jumpProgress = 5;
+            this.maxJumpCount = 2;
+            this.isBlack = true;
+            input.on(Input.EventType.KEY_DOWN, this.onCitieDown, this);
+            input.on(Input.EventType.KEY_UP, this.onCitieUp, this);
         }
 
     }
@@ -109,13 +123,16 @@ export class PlayerController extends Component {
         }
         if (otherCollider.group === PhysicsSystem2D.PhysicsGroup.DOOR) {
             if (this.jumpProgress == 3) {
+                selfCollider.body.enabledContactListener = false;
                 curLevel.setValue(curLevel.value + 1);
-                console.log(curLevel.value);
                 this.levelCtrl.toNewLevel();
+                selfCollider.body.enabledContactListener = true;
             }
-            if (this.jumpProgress == 5) {
+            else if (this.jumpProgress == 5) {
+                selfCollider.body.enabledContactListener = false;
                 curLevel.setValue(curLevel.value + 1);
                 this.levelCtrl.toNewLevel();
+                selfCollider.body.enabledContactListener = true;
             }
         }
         if (otherCollider.group === PhysicsSystem2D.PhysicsGroup.FIRE) {
@@ -207,6 +224,8 @@ export class PlayerController extends Component {
             this.node.setPosition(new Vec3(-8320, -800, 0));
         }
         if (this.isCitie) {
+            this.isGrounded = false;
+            this.jumpCount = 0;
             const manualBlocks = [
                 { x: 308, y: 445 },
                 { x: 757, y: 536 },
