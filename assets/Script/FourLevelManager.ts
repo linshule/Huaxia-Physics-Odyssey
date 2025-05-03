@@ -1,6 +1,6 @@
-import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2 } from 'cc';
+import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
-
+import { createDialogTextNode } from './DialogueUtil';
 @ccclass('FourLevelManager')
 export class FourLevelManager extends Component {
     @property({ type: Prefab })
@@ -19,7 +19,8 @@ export class FourLevelManager extends Component {
     public doorend: Prefab | null = null;
     @property(Node)
     public playerBase: Node | null = null;
-
+    @property({ type: Node })
+    bg: Node | null = null;
     public _road;
     public roadHeight = 10;
     public roadLength = 10;
@@ -33,6 +34,10 @@ export class FourLevelManager extends Component {
         this.generateMap2();
         this.generateMap3();
         this.generateMap4();
+        setTimeout(() => {
+            let nt = createDialogTextNode(new Vec3(0, 200, 0), '请你根据十二平均律的规律完成游戏。')
+            this.bg.addChild(nt);
+        }, 0);
     }
     generateMap1() {
         const manualBlocks = [

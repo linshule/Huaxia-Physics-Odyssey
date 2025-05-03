@@ -1,13 +1,14 @@
-import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2 } from 'cc';
+import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
-
+import { createDialogTextNode } from './DialogueUtil';
 @ccclass('TwoLevelManager')
 export class TwoLevelManager extends Component {
     @property({ type: Prefab })
     public boxPrefab1: Prefab | null = null;
     @property({ type: Prefab })
     public door: Prefab | null = null;
-
+    @property({ type: Node })
+    bg: Node | null = null;
     @property(Node)
     public playerBase: Node | null = null;
 
@@ -17,6 +18,15 @@ export class TwoLevelManager extends Component {
     public BLOCK_SIZE = 2000;
     start() {
         this.init();
+        setTimeout(() => {
+            let nt = createDialogTextNode(new Vec3(0, 200, 0), '“盖十二律黄钟为始，应钟为终，终而复始，循环无端……是故各律皆以黄钟正数为法。”')
+            this.bg.addChild(nt);
+            setTimeout(() => {
+                nt = createDialogTextNode(new Vec3(0, 200, 0), '请你触碰音块观察十二平均律的规律。');
+                this.bg.addChild(nt);
+            }, 5000);
+        }, 0);
+
     }
     init() {
         this.node.removeAllChildren();

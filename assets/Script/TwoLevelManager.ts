@@ -1,6 +1,6 @@
-import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2 } from 'cc';
+import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
-
+import { createDialogTextNode } from './DialogueUtil';
 @ccclass('TwoLevelManager')
 export class TwoLevelManager extends Component {
     @property({ type: Prefab })
@@ -27,6 +27,8 @@ export class TwoLevelManager extends Component {
     public jian: Prefab | null = null;
     @property(Node)
     public playerBase: Node | null = null;
+    @property({ type: Node })
+    bg: Node | null = null;
 
     public _road;
     public roadHeight = 10;
@@ -45,6 +47,22 @@ export class TwoLevelManager extends Component {
         this.generateMap6();
         this.generateMap7();
         this.generateMap8();
+        setTimeout(() => {
+            let nt = createDialogTextNode(new Vec3(0, 200, 0), '玩家控制的角色进入一个充满磁力干扰和共振现象的古代实验室，这里的机关和谜题需要运用“磁偏角”和“纸人共振”的知识来解决。')
+            this.bg.addChild(nt);
+            setTimeout(() => {
+                nt = createDialogTextNode(new Vec3(0, 200, 0), '“沈括，这位古代的智者，发现了磁针并不完全指向南方的秘密，以及声音如何使物体振动。只有掌握这些智慧的勇者，才能揭开这些秘密。”');
+                this.bg.addChild(nt);
+                setTimeout(() => {
+                    nt = createDialogTextNode(new Vec3(0, 200, 0), '“我必须学会如何运用这些古老的物理知识，才能继续我的旅程。”');
+                    this.bg.addChild(nt);
+                    setTimeout(() => {
+                        nt = createDialogTextNode(new Vec3(0, 200, 0), '本关开始跳跃能力可能会失效。');
+                        this.bg.addChild(nt);
+                    }, 5000);
+                }, 5000);
+            }, 5000);
+        }, 0);
     }
     generateMap1() {
         const manualBlocks = [

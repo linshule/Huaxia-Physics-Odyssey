@@ -1,6 +1,7 @@
 import { _decorator, Component, Node, EventTarget, Input, input, EventKeyboard, KeyCode, RigidBody, Vec3, RigidBody2D, Vec2, Animation, Collider2D, Contact2DType, PhysicsSystem2D, IPhysics2DContact, director } from 'cc';
 import { curLevel, LevelManager } from './LevelManager';
 const { ccclass, property } = _decorator;
+import { createDialogTextNode } from './DialogueUtil';
 
 const eventTarget = new EventTarget();
 @ccclass('PlayerController')
@@ -19,7 +20,8 @@ export class PlayerController extends Component {
     private isCitie: boolean = false;
     private fireCount: number = 3;
     private forceMagnitude: number = 1; // 作用力大小
-
+    @property({ type: Node })
+    bg: Node | null = null;
     @property({ type: Number })
     private Level: Number = 0;
 
@@ -108,16 +110,66 @@ export class PlayerController extends Component {
             this.jumpProgress++;
             if (this.jumpProgress == 1) {
                 this.isBlack = true;
+                setTimeout(() => {
+                    let nt = createDialogTextNode(new Vec3(0, 200, 0), '“《墨子·经说下》记载：‘光之人，煦若射。’此卷轴蕴含着小孔成像的智慧。”')
+                    this.bg.addChild(nt);
+                    setTimeout(() => {
+                        nt = createDialogTextNode(new Vec3(0, 200, 0), '“小孔成像卷轴，让我明白了光的直线传播。我将用这个知识，找到正确的方向。”');
+                        this.bg.addChild(nt);
+                        setTimeout(() => {
+                            nt = createDialogTextNode(new Vec3(0, 200, 0), '请你前进，尝试利用小孔成像原理照亮黑暗。');
+                            this.bg.addChild(nt);
+                        }, 5000);
+                    }, 5000);
+                }, 0);
+            }
+            if (this.jumpProgress == 2) {
+                setTimeout(() => {
+                    let nt = createDialogTextNode(new Vec3(0, 200, 0), '《墨子·经说下》曰：‘衡而必正，说在所得。’此卷轴蕴含着杠杆原理的智慧。')
+                    this.bg.addChild(nt);
+                }, 0);
             }
             if (this.jumpProgress == 3) {
                 this.maxJumpCount = 2;
+                setTimeout(() => {
+                    let nt = createDialogTextNode(new Vec3(0, 200, 0), '“杠杆原理卷轴，让我学会了如何用小力撬动重物。我将用这个知识，解决更多的难题。”')
+                    this.bg.addChild(nt);
+                    setTimeout(() => {
+                        nt = createDialogTextNode(new Vec3(0, 200, 0), '请你尝试在空中再次按下W，利用杠杆原理跳得更高。');
+                        this.bg.addChild(nt);
+                    }, 5000);
+                }, 0);
             }
             if (this.jumpProgress == 4) {
                 input.on(Input.EventType.KEY_DOWN, this.onCitieDown, this);
                 input.on(Input.EventType.KEY_UP, this.onCitieUp, this);
+                setTimeout(() => {
+                    let nt = createDialogTextNode(new Vec3(0, 200, 0), '“沈括在《梦溪笔谈》中记载：‘磁针之偏，非正指南，偏东者为磁偏角。’”')
+                    this.bg.addChild(nt);
+                    setTimeout(() => {
+                        nt = createDialogTextNode(new Vec3(0, 200, 0), '“磁偏角的基础卷轴，让我明白了磁针的指向并非绝对。我将用这个知识，找到正确的方向。”');
+                        this.bg.addChild(nt);
+                        setTimeout(() => {
+                            nt = createDialogTextNode(new Vec3(0, 200, 0), '请你长按J，尝试用磁铁吸附到最近的磁铁。');
+                            this.bg.addChild(nt);
+                        }, 5000);
+                    }, 5000);
+                }, 0);
             }
             if (this.jumpProgress == 5) {
                 this.fireCount = 0;
+                setTimeout(() => {
+                    let nt = createDialogTextNode(new Vec3(0, 200, 0), '“沈括观察到，当纸人与特定频率的声音共振时，会发生不可思议的现象。”')
+                    this.bg.addChild(nt);
+                    setTimeout(() => {
+                        nt = createDialogTextNode(new Vec3(0, 200, 0), '“纸人共振的原理卷轴，让我学会了如何利用共振。我将用这个知识，解决更多的难题。”');
+                        this.bg.addChild(nt);
+                        setTimeout(() => {
+                            nt = createDialogTextNode(new Vec3(0, 200, 0), '请你尝试利用纸人共振原理毁坏屏障。请注意，你最多只能毁坏2面屏障。');
+                            this.bg.addChild(nt);
+                        }, 5000);
+                    }, 5000);
+                }, 0);
             }
             selfCollider.body.enabledContactListener = true;
         }
@@ -178,6 +230,9 @@ export class PlayerController extends Component {
                 break;
             case KeyCode.KEY_W:
                 this.isJump = true;
+                break;
+            case KeyCode.KEY_P:
+                director.loadScene('TheEnd');
                 break;
         }
     }

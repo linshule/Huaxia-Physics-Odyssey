@@ -3,18 +3,12 @@ const { ccclass, property } = _decorator;
 
 import { createDialogTextNode } from './DialogueUtil';
 
-@ccclass('SettingController')
-export class SettingController extends Component {
-    @property({ type: String })
-    targetScene1: string = "Start";
+@ccclass('NewComponent')
+export class NewComponent extends Component {
     @property({ type: Node })
     bg: Node | null = null;
     onLoad() {
-        const button1 = this.node.getComponent(Button);
-        button1.node.on(Button.EventType.CLICK, this.switchScene1, this);
-    }
-    switchScene1() {
-        director.loadScene(this.targetScene1);
+        this.show();
     }
     show() {
         let nt = createDialogTextNode(new Vec3(0, 200, 0), '引擎工程师：林舒乐 匡欣怡 袁瑛凯')

@@ -1,5 +1,6 @@
-import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2 } from 'cc';
+import { _decorator, CCInteger, Component, instantiate, Node, Prefab, Vec2, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
+import { createDialogTextNode } from './DialogueUtil';
 enum BlockType {
     BT_NONE,
     BT_STONE,
@@ -22,6 +23,8 @@ export class Level1Manage extends Component {
     public black: Prefab | null = null;
     @property(Node)
     public playerBase: Node | null = null;
+    @property({ type: Node })
+    bg: Node | null = null;
 
     public _road;
     public roadHeight = 10;
@@ -63,6 +66,22 @@ export class Level1Manage extends Component {
                 }
             }
         }
+        setTimeout(() => {
+            let nt = createDialogTextNode(new Vec3(0, 200, 0), '玩家控制的角色站在一个古老的洞穴入口，洞穴内布满了各种平台和障碍物，有些平台上方悬浮着一个卷轴。')
+            this.bg.addChild(nt);
+            setTimeout(() => {
+                nt = createDialogTextNode(new Vec3(0, 200, 0), '“在这片神秘的土地上，隐藏着无数的古籍卷轴。每个卷轴都记载着一段古老的智慧，只有最勇敢和智慧的探险者才能获得它们。”');
+                this.bg.addChild(nt);
+                setTimeout(() => {
+                    nt = createDialogTextNode(new Vec3(0, 200, 0), '“我必须依靠我的技巧和智慧，收集所有的卷轴，揭开古籍的秘密。”');
+                    this.bg.addChild(nt);
+                    setTimeout(() => {
+                        nt = createDialogTextNode(new Vec3(0, 200, 0), '“尝试使用WASD键的不同组合，找到正确的跳跃方式，抓住第一个卷轴。”');
+                        this.bg.addChild(nt);
+                    }, 5000);
+                }, 5000);
+            }, 5000);
+        }, 0);
     }
     generateMap1() {
         const manualBlocks = [
